@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
-</body>
+    <header>
+        <img id="" src="https://via.placeholder.com/200x60/555" alt="Logo">
+        <h1>Draw a Pretty Picture</h1>
+        <nav>
+            <ul>
+                <li class="current"><a href="#">Home</a></li>
+                <li><a href="./nature.html">Saved Images</a></li>
+                <li><a href="./about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<footer>
-    &copy; Projet J, 2019
-</footer>
+    <main>
+        <section>
+            <h2>Cool Drawing</h2>
+            <p>Some cool drawing instructions!</p>
+            <canvas id="canvas" width="960" height="960"></canvas>
+            <ul>
+                <li><img src="https://via.placeholder.com/320/555" alt="Image 1" id="img1"></li>
+                <li><img src="https://via.placeholder.com/320/555" alt="Image 2" id="img2"></li>
+                <li><img src="https://via.placeholder.com/320/555" alt="Image 3" id="img3"></li>
+            </ul>
+            <ul>
+                <li><button type="button">Reset</button></li>
+                <li><button type="button">Save</button></li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        &copy; Project J, 2019
+    </footer>
+    <script src="./js/draw.js"></script>
+    <script src="./js/app.js"></script>
+</body>
 </html>
