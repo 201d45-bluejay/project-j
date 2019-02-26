@@ -15,6 +15,8 @@ var click_handler = function(event) {
         console.log('save');
         var dataUrl = canvas.toDataURL('image/png');
         event.target.href = dataUrl;
+        //<a href="./assets/mastersystem.png"><button class="button" id="one">Download</button>
+        event.target.download = 'download_image';
         console.log(event.target);
 
     } else return; 
