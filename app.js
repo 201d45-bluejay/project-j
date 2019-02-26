@@ -2,8 +2,9 @@
 var click_handler = function(event) {
     if (event.target.id === 'canvas') {
         console.log(event.layerX);
-        ctx.fillStyle = 'black'; 
-        ctx.ellipse(50, 50, 10, 10, 0, 0, 0);
+        ctx.fillStyle = 'black';
+        ctx.beginPath(); 
+        ctx.ellipse(event.layerX, event.layerY, 10, 10, 0, 0, Math.PI*2); //ellipse requires last two parameters to be full 2pi radian circle.
         ctx.fill();
         
     }
@@ -12,6 +13,10 @@ var click_handler = function(event) {
         
     } else if (event.target.id === 'save_button') {
         console.log('save');
+        var dataUrl = canvas.toDataURL('image/png');
+        event.target.href = dataUrl;
+        console.log(event.target);
+
     } else return; 
     
     
@@ -24,11 +29,9 @@ var click_handler = function(event) {
 var event_target = document.getElementById('drawing_pad');
 event_target.addEventListener('click' , click_handler , false);
 
-var ctx = document.getElementById('canvas').getContext('2d');
-ctx.beginPath();
-ctx.fillStyle = 'black'; 
-        ctx.ellipse(50, 50, 10, 10, 0, 0, 0);
-        ctx.fill();
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
 
 
 
