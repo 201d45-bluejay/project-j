@@ -84,4 +84,8 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# Dolphin directory
+.directory
+
+
 # End of https://www.gitignore.io/api/node
