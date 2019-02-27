@@ -3,7 +3,7 @@
 var Image_Data = function () {
   this.current = 0;
   this.open_idx = 0;
-  this.images = []
+  this.images = [];
   for (var i = 0; i < 12; i++) {
     this.images.push(new Img());
   }
