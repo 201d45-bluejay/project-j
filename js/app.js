@@ -34,6 +34,11 @@ var canvas_click = function(event){
     console.log('hit');
     point1.x = mouse.x;
     point1.y = mouse.y;
+    ctx.beginPath();
+    ctx.arc(mouse.x,mouse.y, 15, 0, Math.PI*2);
+    ctx.strokeStyle= 'green';
+    ctx.lineWidth = 2;
+    ctx.stroke();
   } else if (color === bg && point1.x) {
     console.log('bghit2');
     point2.x = mouse.x;
