@@ -24,19 +24,22 @@ var canvas_click = function(event){
   var mouse = {
     x:event.layerX,
     y:event.layerY
-  };  
+  };
   var pixel = ctx.getImageData(mouse.x, mouse.y, 1, 1).data;
   var color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
   var bg = data.images[data.current].bg_color;
   var fg = data.images[data.current].fg_color;
   //console.log(color, bg, fg);
-  if(color !== bg && !point1.x){ //if color = red then we need it to hold onto the first point, 
+  if(color !== bg || !point1.x){ //if color = red then we need it to hold onto the first point, 
   //   //if first click is valid, start saving data points, if not don't save
     console.log('hit');
     point1.x = mouse.x;
     point1.y = mouse.y;
-  } else point1 = {};
-  if(point1.x){
+  } else {
+    point1 = {};
+  }
+  if (color === bg) console.log('miss', point1);
+  if(point1.x && color === bg) {
     console.log('hit2', bg, color);
     point2.x = mouse.x;
     point2.y = mouse.y;
@@ -63,17 +66,10 @@ var save = function(){
 var click_handler = function(event) {
   event.preventDefault();
   if (event.target.id === 'canvas') {
-    // console.log(event.layerX);
-    // ctx.fillStyle = 'black';
-    // ctx.beginPath();
-    // ctx.ellipse(event.layerX, event.layerY, 10, 10, 0, 0, Math.PI*2); //ellipse requires last two parameters to be full 2pi radian circle.
-    // ctx.fill();
     canvas_click(event);
-
   }
   else if (event.target.id === 'reset_button') {
     reset();
-
   } else if (event.target.id === 'save_button') {
     save();
     // console.log('save');
