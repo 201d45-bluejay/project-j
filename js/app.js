@@ -1,5 +1,7 @@
 'use strict';
 
+var data,working;
+
 var Image_Data = function () {
   this.current = 0;
   this.open_idx = 0;
@@ -70,6 +72,17 @@ var save = function(){
   }
 };
 
+var retrieve = function(){
+  if (localStorage.getItem('nature_images')){
+    data = JSON.parse(localStorage.getItem('nature_images'));
+    working = data.images[data.current];   
+  }
+  else {
+    data = new Image_Data();
+    // console.log(data);
+    working = new Img();
+  }
+};
 
 var click_handler = function(event) {
   event.preventDefault();
@@ -130,9 +143,8 @@ var ctx = canvas.getContext('2d');
 // create the image data variable. this assumes we haven't tried to load data yet.
 // should probably check if data exists first (storage item is called 'nature_images')
 // and if it does, load it.
-var data = new Image_Data();
-// console.log(data);
-var working = new Img();
+
+retrieve();
 
 ctx.fillStyle = data.images[data.current].bg_color;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
