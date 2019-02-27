@@ -3,9 +3,10 @@
 var data,working;
 
 var Image_Data = function () {
-  this.current = 0;
+  this.current = 0; // either points at "most recent image" or "load this one"
   this.open_idx = 0;
   this.images = [];
+  this.newImg = true;
   for (var i = 0; i < 12; i++) {
     this.images.push(new Img());
   }
@@ -34,22 +35,56 @@ var canvas_click = function(event){
     console.log('hit');
     point1.x = mouse.x;
     point1.y = mouse.y;
-  } else if (color === bg && point1.x) {
+    ctx.beginPath();
+    ctx.arc(mouse.x,mouse.y, 15, 0, Math.PI*2);
+    ctx.strokeStyle= 'green';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  } else if (point1.x) {
     console.log('bghit2');
     point2.x = mouse.x;
     point2.y = mouse.y;
     working.points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
     point1 = {};
     point2 = {};
-    console.log(data);
+    console.log('data:', data);
+    draw();
   } else {
+    draw();
     point1 = {};
   }
   console.log(working);
 };
 
+var draw = function() {
+  clear();
+  // draw base image
+  ctx.beginPath();
+  ctx.fillStyle = working.fg_color;
+  ctx.arc(50, 50, 10, 0, Math.PI * 2);
+  ctx.fill();
+
+  // array of points, draws a single thick line per point set
+  for (var i = 0; i < working.points.length; i++) {
+    ctx.beginPath();
+    ctx.lineWidth = 10;
+    ctx.lineCap = 'butt';
+    ctx.strokeStyle = working.fg_color;
+    ctx.moveTo(working.points[i].x1, working.points[i].y1);
+    ctx.lineTo(working.points[i].x2, working.points[i].y2);
+    ctx.stroke();
+  }
+};
+
+var clear = function() {
+  ctx.fillStyle = working.bg_color;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
 var reset = function(){
+  working.points = [];
   console.log('reset');
+  draw();
 };
 
 var overwrite_check = function(){
@@ -57,9 +92,9 @@ var overwrite_check = function(){
 };
 
 var save = function(){
-  console.log('save');
   if (data.open_idx < 12){
     data.images[data.open_idx] = working;
+    data.current = data.open_idx;
     data.open_idx++;
     localStorage.setItem('nature_images', JSON.stringify(data));
   }
@@ -70,18 +105,29 @@ var save = function(){
       localStorage.setItem('nature_images', JSON.stringify(data));
     }
   }
+  alert(`Saved as image #${data.open_idx}`);
 };
 
 var retrieve = function(){
   if (localStorage.getItem('nature_images')){
     data = JSON.parse(localStorage.getItem('nature_images'));
-    working = data.images[data.current];   
-  }
-  else {
+    // if we're getting data after picking an image from the gallery to edit,
+    // then we should load that one.
+    data.newImg = false;
+    if (data.newImg) {
+      // otherwise, working should be new
+      working = new Img();
+      return;
+    }
+    working = data.images[data.current];
+    console.log(data, working);
+  } else {
     data = new Image_Data();
     // console.log(data);
     working = new Img();
+    console.log('empty', data, working);
   }
+  draw();
 };
 
 var click_handler = function(event) {
@@ -92,7 +138,7 @@ var click_handler = function(event) {
   else if (event.target.id === 'reset_button') {
     reset();
   } else if (event.target.id === 'save_button') {
-    data.open_idx = 12;   //TODO:delete when done
+    // data.open_idx = 12;   //TODO:delete when done
     console.log(data);
     save();
     // console.log('save');
@@ -146,11 +192,13 @@ var ctx = canvas.getContext('2d');
 
 retrieve();
 
-ctx.fillStyle = data.images[data.current].bg_color;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = data.images[data.current].fg_color;
-ctx.arc(50, 50, 10, 0, Math.PI*2);
-ctx.fill();
+draw();
+
+// ctx.fillStyle = data.images[data.current].bg_color;
+// ctx.fillRect(0, 0, canvas.width, canvas.height);
+// ctx.fillStyle = data.images[data.current].fg_color;
+// ctx.arc(50, 50, 10, 0, Math.PI*2);
+// ctx.fill();
 
 
 //local storage data handling: loading data, saving data, (data format - single object). Object id and array of things that have been added to canvas (undo if necessary)
