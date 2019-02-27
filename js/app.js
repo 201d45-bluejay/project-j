@@ -1,5 +1,7 @@
 'use strict';
 
+var data,working;
+
 var Image_Data = function () {
   this.current = 0;
   this.open_idx = 0;
@@ -26,9 +28,9 @@ var canvas_click = function(event){
   };
   var pixel = ctx.getImageData(mouse.x, mouse.y, 1, 1).data;
   var color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
-  var bg = data.images[data.current].bg_color;
+  var bg = working.bg_color;
 
-  if(color !== bg && !point1.x){ //if color = red then we need it to hold onto the first point, 
+  if(color !== bg && !point1.x){ //if color = red then we need it to hold onto the first point,
     console.log('hit');
     point1.x = mouse.x;
     point1.y = mouse.y;
@@ -36,22 +38,50 @@ var canvas_click = function(event){
     console.log('bghit2');
     point2.x = mouse.x;
     point2.y = mouse.y;
-    data.images[data.current].points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
+    working.points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
     point1 = {};
     point2 = {};
     console.log(data);
   } else {
     point1 = {};
   }
+  console.log(working);
 };
 
 var reset = function(){
   console.log('reset');
 };
 
+var overwrite_check = function(){
+  return confirm('overwrite oldest image?');
+};
+
 var save = function(){
   console.log('save');
-  localStorage.setItem('nature_images', JSON.stringify(data));
+  if (data.open_idx < 12){
+    data.images[data.open_idx] = working;
+    data.open_idx++;
+    localStorage.setItem('nature_images', JSON.stringify(data));
+  }
+  else {
+    if (overwrite_check()){
+      data.images.push(data.images.shift());
+      data.images[11] = working;
+      localStorage.setItem('nature_images', JSON.stringify(data));
+    }
+  }
+};
+
+var retrieve = function(){
+  if (localStorage.getItem('nature_images')){
+    data = JSON.parse(localStorage.getItem('nature_images'));
+    working = data.images[data.current];   
+  }
+  else {
+    data = new Image_Data();
+    // console.log(data);
+    working = new Img();
+  }
 };
 
 var click_handler = function(event) {
@@ -62,6 +92,8 @@ var click_handler = function(event) {
   else if (event.target.id === 'reset_button') {
     reset();
   } else if (event.target.id === 'save_button') {
+    data.open_idx = 12;   //TODO:delete when done
+    console.log(data);
     save();
     // console.log('save');
     // var dataUrl = canvas.toDataURL('image/png');
@@ -111,8 +143,8 @@ var ctx = canvas.getContext('2d');
 // create the image data variable. this assumes we haven't tried to load data yet.
 // should probably check if data exists first (storage item is called 'nature_images')
 // and if it does, load it.
-var data = new Image_Data();
-console.log(data);
+
+retrieve();
 
 ctx.fillStyle = data.images[data.current].bg_color;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
