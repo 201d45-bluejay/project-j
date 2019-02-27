@@ -57,11 +57,14 @@ var overwrite_check = function(){
 var save = function(){
   console.log('save');
   if (data.open_idx < 12){
-    localStorage.setItem('nature_images', JSON.stringify(data));
+    data.images[data.open_idx] = working;
     data.open_idx++;
+    localStorage.setItem('nature_images', JSON.stringify(data));
   }
   else {
     if (overwrite_check()){
+      data.images.push(data.images.shift());
+      data.images[11] = working;
       localStorage.setItem('nature_images', JSON.stringify(data));
     }
   }
@@ -76,6 +79,8 @@ var click_handler = function(event) {
   else if (event.target.id === 'reset_button') {
     reset();
   } else if (event.target.id === 'save_button') {
+    data.open_idx = 12;   //TODO:delete when done
+    console.log(data);
     save();
     // console.log('save');
     // var dataUrl = canvas.toDataURL('image/png');
