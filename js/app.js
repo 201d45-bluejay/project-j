@@ -3,7 +3,7 @@
 var data,working;
 
 var Image_Data = function () {
-  this.current = 0;
+  this.current = 0; // either points at "most recent image" or "load this one"
   this.open_idx = 0;
   this.images = [];
   this.newImg = true;
@@ -92,9 +92,9 @@ var overwrite_check = function(){
 };
 
 var save = function(){
-  console.log('save');
   if (data.open_idx < 12){
     data.images[data.open_idx] = working;
+    data.current = data.open_idx;
     data.open_idx++;
     localStorage.setItem('nature_images', JSON.stringify(data));
   }
@@ -105,6 +105,7 @@ var save = function(){
       localStorage.setItem('nature_images', JSON.stringify(data));
     }
   }
+  alert(`Saved as image #${data.open_idx}`);
 };
 
 var retrieve = function(){
@@ -112,6 +113,7 @@ var retrieve = function(){
     data = JSON.parse(localStorage.getItem('nature_images'));
     // if we're getting data after picking an image from the gallery to edit,
     // then we should load that one.
+    data.newImg = false;
     if (data.newImg) {
       // otherwise, working should be new
       working = new Img();
@@ -125,6 +127,7 @@ var retrieve = function(){
     working = new Img();
     console.log('empty', data, working);
   }
+  draw();
 };
 
 var click_handler = function(event) {
