@@ -37,6 +37,8 @@ var canvas_click = function(event){
     point2.x = mouse.x;
     point2.y = mouse.y;
     data.images[data.current].points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
+    point1 = {};
+    point2 = {};
     console.log(data);
   } else {
     point1 = {};
@@ -78,17 +80,27 @@ var click_handler = function(event) {
 
 // for drawing, we need to take a set of points and draw the correct shape for
 // that set of points.
-// for a tree, for now, let's do...
+// for a tree, for now, let's do... a rectangle? narrow and length = distance
+// between click points?
 
-// we'll need something to check what image to work on, this happens on page load
-
-// somehow we have to know... okay, so before we create new image data, we need
-// to check if there is data to load, and if it is, we need to load the data
 // on loading the data, we need to check... the current index.
 
 // data.current is the controlling element which picks which image we're working
 // on. data.current is what we change on other pages, then save the data object
 // again
+
+// when does the open_idx get incremented? When we save an image into an open slot.
+// save image into [open_idx] and increment open_idx.
+// if open_idx === 12, trigger the warning to ask if the user wants to delete
+// the oldest image. if they respond yes (true response from the ask function)
+// then we data.images.push(data.images.shift()); to take the first image off
+// the front of the array and add it to the end of the array.
+// then save into spot 11.
+
+// need a function that unhides the warning asking if a user wants to overwrite
+// their oldest item.
+// for now, just use a confirm('message') to get true or false, we can write
+// the pretty version on HTML later, as a stretch goal.
 
 var event_target = document.getElementById('drawing_pad');
 event_target.addEventListener('click' , click_handler , false);
@@ -96,8 +108,9 @@ event_target.addEventListener('click' , click_handler , false);
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-
 // create the image data variable. this assumes we haven't tried to load data yet.
+// should probably check if data exists first (storage item is called 'nature_images')
+// and if it does, load it.
 var data = new Image_Data();
 console.log(data);
 
