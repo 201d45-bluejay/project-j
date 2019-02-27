@@ -59,6 +59,49 @@ main {
     margin-bottom:20px; 
 }
 
+main button{
+    display: inline-block;
+    padding: 0 10px;
+}
+
+main a{
+    margin-top:20px
+}
+
+
+article img{
+    float:left;
+    margin-right:20px;
+    margin-left:20px;
+    margin-top:20px;
+    margin-bottom:20px;  
+}
+
+main > p{
+    margin:20px;
+}
+
+.button {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+.btn {
+    background-color: forestgreen;
+    border: none;
+    color:chocolate;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top:20px;
+    margin-right:30px;
+    overflow: hidden;
+}
+
 footer img {
     position: absolute;
     top: 2198;
