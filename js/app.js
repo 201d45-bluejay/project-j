@@ -20,35 +20,29 @@ var point1 = {};
 var point2 = {};
 
 var canvas_click = function(event){
-  //console.log(point1.x, bg, color);
   var mouse = {
     x:event.layerX,
     y:event.layerY
-  };  
+  };
   var pixel = ctx.getImageData(mouse.x, mouse.y, 1, 1).data;
   var color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
   var bg = data.images[data.current].bg_color;
-  var fg = data.images[data.current].fg_color;
-  //console.log(color, bg, fg);
+
   if(color !== bg && !point1.x){ //if color = red then we need it to hold onto the first point, 
-  //   //if first click is valid, start saving data points, if not don't save
     console.log('hit');
     point1.x = mouse.x;
     point1.y = mouse.y;
-  } else point1 = {};
-  if(point1.x){
-    console.log('hit2', bg, color);
+  } else if (color === bg && point1.x) {
+    console.log('bghit2');
     point2.x = mouse.x;
     point2.y = mouse.y;
+    data.images[data.current].points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
+    point1 = {};
+    point2 = {};
+    console.log(data);
+  } else {
+    point1 = {};
   }
-  console.log(point1, point2);
-  // ctx.beginPath();
-  // ctx.fillStyle = fg;
-  // ctx.arc(point1.x, point1.y, 10, 0, Math.PI*2);
-  // ctx.lineTo(point2.x, point2.y);
-  // ctx.stroke();
-  //ctx.closePath();
-  // ctx.fill();
 };
 
 var reset = function(){
@@ -57,23 +51,16 @@ var reset = function(){
 
 var save = function(){
   console.log('save');
-  localStorage.setItem('data', JSON.stringify(data));
+  localStorage.setItem('nature_images', JSON.stringify(data));
 };
 
 var click_handler = function(event) {
   event.preventDefault();
   if (event.target.id === 'canvas') {
-    // console.log(event.layerX);
-    // ctx.fillStyle = 'black';
-    // ctx.beginPath();
-    // ctx.ellipse(event.layerX, event.layerY, 10, 10, 0, 0, Math.PI*2); //ellipse requires last two parameters to be full 2pi radian circle.
-    // ctx.fill();
     canvas_click(event);
-
   }
   else if (event.target.id === 'reset_button') {
     reset();
-
   } else if (event.target.id === 'save_button') {
     save();
     // console.log('save');
@@ -91,6 +78,29 @@ var click_handler = function(event) {
 
 };
 
+// for drawing, we need to take a set of points and draw the correct shape for
+// that set of points.
+// for a tree, for now, let's do... a rectangle? narrow and length = distance
+// between click points?
+
+// on loading the data, we need to check... the current index.
+
+// data.current is the controlling element which picks which image we're working
+// on. data.current is what we change on other pages, then save the data object
+// again
+
+// when does the open_idx get incremented? When we save an image into an open slot.
+// save image into [open_idx] and increment open_idx.
+// if open_idx === 12, trigger the warning to ask if the user wants to delete
+// the oldest image. if they respond yes (true response from the ask function)
+// then we data.images.push(data.images.shift()); to take the first image off
+// the front of the array and add it to the end of the array.
+// then save into spot 11.
+
+// need a function that unhides the warning asking if a user wants to overwrite
+// their oldest item.
+// for now, just use a confirm('message') to get true or false, we can write
+// the pretty version on HTML later, as a stretch goal.
 
 var event_target = document.getElementById('drawing_pad');
 event_target.addEventListener('click' , click_handler , false);
@@ -99,6 +109,8 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 // create the image data variable. this assumes we haven't tried to load data yet.
+// should probably check if data exists first (storage item is called 'nature_images')
+// and if it does, load it.
 var data = new Image_Data();
 console.log(data);
 
