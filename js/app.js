@@ -26,9 +26,9 @@ var canvas_click = function(event){
   };
   var pixel = ctx.getImageData(mouse.x, mouse.y, 1, 1).data;
   var color = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
-  var bg = data.images[data.current].bg_color;
+  var bg = working.bg_color;
 
-  if(color !== bg && !point1.x){ //if color = red then we need it to hold onto the first point, 
+  if(color !== bg && !point1.x){ //if color = red then we need it to hold onto the first point,
     console.log('hit');
     point1.x = mouse.x;
     point1.y = mouse.y;
@@ -36,23 +36,37 @@ var canvas_click = function(event){
     console.log('bghit2');
     point2.x = mouse.x;
     point2.y = mouse.y;
-    data.images[data.current].points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
+    working.points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
     point1 = {};
     point2 = {};
     console.log(data);
   } else {
     point1 = {};
   }
+  console.log(working);
 };
 
 var reset = function(){
   console.log('reset');
 };
 
+var overwrite_check = function(){
+  return confirm('overwrite oldest image?');
+};
+
 var save = function(){
   console.log('save');
-  localStorage.setItem('nature_images', JSON.stringify(data));
+  if (data.open_idx < 12){
+    localStorage.setItem('nature_images', JSON.stringify(data));
+    data.open_idx++;
+  }
+  else {
+    if (overwrite_check()){
+      localStorage.setItem('nature_images', JSON.stringify(data));
+    }
+  }
 };
+
 
 var click_handler = function(event) {
   event.preventDefault();
@@ -112,7 +126,8 @@ var ctx = canvas.getContext('2d');
 // should probably check if data exists first (storage item is called 'nature_images')
 // and if it does, load it.
 var data = new Image_Data();
-console.log(data);
+// console.log(data);
+var working = new Img();
 
 ctx.fillStyle = data.images[data.current].bg_color;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
