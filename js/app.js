@@ -5,11 +5,11 @@ var Image_Data = function () {
   this.open_idx = 0;
   this.images = []
   for (var i = 0; i < 12; i++) {
-    this.images.push(new Image());
+    this.images.push(new Img());
   }
 };
 
-var Image = function (points, tree, bg_color, fg_color) {
+var Img = function (points, tree, bg_color, fg_color) {
   this.points = points || [];
   this.type = tree || 'tree';
   this.bg_color = bg_color || 'rgb(255,255,255)';
