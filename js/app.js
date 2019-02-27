@@ -113,7 +113,7 @@ var retrieve = function(){
     data = JSON.parse(localStorage.getItem('nature_images'));
     // if we're getting data after picking an image from the gallery to edit,
     // then we should load that one.
-    data.newImg = false;
+    // data.newImg = false;
     if (data.newImg) {
       // otherwise, working should be new
       working = new Img();
