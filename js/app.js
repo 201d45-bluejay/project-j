@@ -1,84 +1,21 @@
 'use strict';
 
-//object literal structure
-var data = {
-  images: [ //need 12 as part of instantiation
-    {
-      points: [],
-      type:'tree',
-      bg_color:'rgb(255,255,255)',
-      fg_color:'rgb(0,0,0)',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    },
-    {
-      points: [],
-      type:'tree',
-      bg_color:'white',
-      fg_color:'black',
-    }
-  ],
-  current:0,
-  open_idx:0
+var Image_Data = function () {
+  this.current = 0;
+  this.open_idx = 0;
+  this.images = []
+  for (var i = 0; i < 12; i++) {
+    this.images.push(new Image());
+  }
 };
+
+var Image = function (points, tree, bg_color, fg_color) {
+  this.points = points || [];
+  this.type = tree || 'tree';
+  this.bg_color = bg_color || 'rgb(255,255,255)';
+  this.fg_color = fg_color || 'rgb(0,0,0)';
+};
+
 var point1 = {};
 var point2 = {};
 
@@ -99,12 +36,12 @@ var canvas_click = function(event){
     point1.x = mouse.x;
     point1.y = mouse.y;
   } else point1 = {};
-    if(point1.x){
-      console.log('hit2', bg, color);
-      point2.x = mouse.x;
-      point2.y = mouse.y;
-    }
-    console.log(point1, point2);
+  if(point1.x){
+    console.log('hit2', bg, color);
+    point2.x = mouse.x;
+    point2.y = mouse.y;
+  }
+  console.log(point1, point2);
   // ctx.beginPath();
   // ctx.fillStyle = fg;
   // ctx.arc(point1.x, point1.y, 10, 0, Math.PI*2);
@@ -160,6 +97,10 @@ event_target.addEventListener('click' , click_handler , false);
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
+
+// create the image data variable. this assumes we haven't tried to load data yet.
+var data = new Image_Data();
+console.log(data);
 
 ctx.fillStyle = data.images[data.current].bg_color;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
