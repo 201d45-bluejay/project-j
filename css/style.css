@@ -54,18 +54,26 @@ header a {
     height:100px;
 }
 
+.stickyHeader + .scroll{
+    padding-top: 100px;
+}
+
+.stickyHeader{
+    position:fixed;
+}
+
 main {
     margin-top:10px;
     margin-bottom:20px; 
     margin-left: 20px;
     margin-right: auto;
-    width:960px;
+    width:1020px;
 }
 
-main button{
+/* main button{
     display: inline-block;
     padding: 0 10px;
-}
+} */
 
 main a{
     margin-top:20px
@@ -77,7 +85,7 @@ article img{
     margin-left:20px;
     margin-top:20px;
     margin-bottom:20px;  
-} */
+} 
 
 #about{
     margin-left: 10px;
@@ -97,16 +105,52 @@ p {
     display: flex;
     /* flex: 200px;
     flex-wrap: nowrap; */
-} */
+} 
 
-.button {
+#images{
+    float: right;
+}
+
+#images:nth-child(3n+1){
+    clear:left;
+}
+
+#flex-grid{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.col1{
+    flex:1; 
+}
+
+.col2{
+    flex:2; 
+}
+
+.col3{
+    flex:3; 
+}
+
+/* .button {
         background-color: DodgerBlue;
         border: none;
         color: white;
         padding: 12px 30px;
         cursor: pointer;
         font-size: 20px;
-      }
+      } */
+
+ .button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+}
 
 .btn {
     background-color: forestgreen;
@@ -117,6 +161,7 @@ p {
     font-size: 20px;
     margin-top:20px;
     margin-right:30px;
+    margin-bottom: 20px;
     overflow: hidden;
 }
 
