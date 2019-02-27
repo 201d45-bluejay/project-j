@@ -150,24 +150,33 @@ p {
     background-color: DodgerBlue;
     border: none;
     color: white;
+    font-size: 20px;
 }
 
 .btn {
     background-color: forestgreen;
     border: none;
-    color:chocolate;
-    padding: 12px 30px;
+    color :white;
+    padding: 2px 9px;
     cursor: pointer;
     font-size: 20px;
     margin-top:20px;
     margin-right:30px;
     margin-bottom: 20px;
+    text-align: center;
+    width: 100px;
+    height: 26px;
     overflow: hidden;
+}
+
+footer{
+    margin-left: 10px;
+    
 }
 
 footer img {
     position: absolute;
     top: 2198;
     right: 0;
-    
+    margin-right: 5px;
 }
