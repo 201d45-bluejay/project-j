@@ -34,11 +34,14 @@ var canvas_click = function(event, cntxt){
 };
 
 var base_img = function(cntxt, url) {
-  cntxt.beginPath();
-  cntxt.fillStyle = working.fg_color;
-  cntxt.arc(50, 50, 10, 0, Math.PI * 2);
-  cntxt.fill();
-}
+  // cntxt.beginPath();
+  // cntxt.fillStyle = working.fg_color;
+  // cntxt.arc(50, 50, 10, 0, Math.PI * 2);
+  // cntxt.fill();
+  var draw_base_img = new Image();
+  draw_base_img.src = url;
+  cntxt.drawImage(draw_base_img, 0, 0);
+};
 
 var tree_limb = function(cntxt, points) {
   cntxt.beginPath();
@@ -53,7 +56,7 @@ var tree_limb = function(cntxt, points) {
 var draw = function(cntxt, cur_img) {
   clear(cntxt);
   // draw base image
-  base_img(cntxt, '../img/tree.png');
+  base_img(cntxt, '../img/tree1.png');
 
   // array of points, draws a single thick line per point set
   for (var i = 0; i < cur_img.points.length; i++) {
@@ -68,6 +71,5 @@ var clear = function(cntxt) {
 
 var reset_current = function(){
   working.points = [];
-  console.log('reset');
-  draw(ctx);
+  draw(ctx, working);
 };
