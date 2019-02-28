@@ -53,10 +53,8 @@ var create_frames = function() {
     
     outer_el.appendChild(div_el);
     target.appendChild(outer_el);
-    
     var cntxt = canvas_el.getContext('2d');
-    data.current = i;
-    draw(cntxt, data.images[data.current]);
+    draw(cntxt, data.images[i]);
   }
 };
 
