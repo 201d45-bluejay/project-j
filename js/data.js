@@ -20,6 +20,7 @@ var Img = function (points, tree, bg_color, fg_color) {
 };
 
 var retrieve = function(){
+  debugger;
   if (localStorage.getItem('nature_images')){
     data = JSON.parse(localStorage.getItem('nature_images'));
     // if we're getting data after picking an image from the gallery to edit,
