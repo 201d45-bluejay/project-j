@@ -51,14 +51,14 @@ var create_frames = function() {
     outer_el.appendChild(div_el);
     target.appendChild(outer_el);
   }
-}
+};
 
 var gallery_clicks = function(event) {
   event.preventDefault();
   if (event.target.tagName === 'A') {
     console.log(event.target.name);
   }
-}
+};
 
 var target = document.getElementById('flex-grid');
 target.addEventListener('click', gallery_clicks);
