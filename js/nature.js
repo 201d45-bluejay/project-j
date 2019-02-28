@@ -28,39 +28,62 @@ var create_frames = function() {
     var outer_el = document.createElement('div');
     var canvas_el = document.createElement('canvas');
     var div_el = document.createElement('div');
-    var a_el = document.createElement('a');
-
-    canvas_el.setAttribute('id', `canvas${i}`);
-    canvas_el.setAttribute('width', 640);
-    canvas_el.setAttribute('height', 640);
+    
+    canvas_el.id = `canvas${i}`;
+    canvas_el.width = 640;
+    canvas_el.height = 640;
     outer_el.appendChild(canvas_el);
-
+    
     div_el.className = 'natureButtons';
-
+    
+    var a_el = document.createElement('a');
     a_el.className = 'btn';
     a_el.name = 'edit';
+    a_el.id = `edit${i}`;
     a_el.textContent = 'Edit';
     div_el.appendChild(a_el);
 
     a_el = document.createElement('a');
     a_el.className = 'button';
     a_el.name = 'download';
+    a_el.id = `download${i}`;
     a_el.textContent = 'Download';
     div_el.appendChild(a_el);
 
     outer_el.appendChild(div_el);
     target.appendChild(outer_el);
   }
+};
+
+var save = function(idx) {
+  console.log('edit', idx);
 }
 
-var gallery_clicks = function(event) {
+var download = function(idx) {
+  console.log('download', idx);
+}
+
+var gallery_click_handler = function(event) {
   event.preventDefault();
-  if (event.target.tagName === 'A') {
-    console.log(event.target.name);
+  var name = event.target.name;
+  var id = event.target.id;
+  var idx;
+  switch (name) {
+  case 'edit':
+    idx = id.slice('edit'.length);
+    save(idx);
+    break;
+  case 'download':
+    idx = id.slice('download'.length);
+    download(idx);
+    break;
   }
+  // if (event.target.tagName === 'A') {
+  //   console.log(event.target.name);
+  // }
 }
 
 var target = document.getElementById('flex-grid');
-target.addEventListener('click', gallery_clicks);
+target.addEventListener('click', gallery_click_handler);
 
 create_frames();
