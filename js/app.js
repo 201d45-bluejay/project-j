@@ -24,7 +24,7 @@ var save_drawing = function(){
 var click_handler = function(event) {
   event.preventDefault();
   if (event.target.id === 'canvas') {
-    canvas_click(event);
+    canvas_click(event, ctx);
   }
   else if (event.target.id === 'reset_button') {
     reset_current();
@@ -51,7 +51,7 @@ var init = function () {
 
   retrieve();
 
-  draw();
+  draw(ctx, working);
 };
 
 init();
