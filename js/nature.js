@@ -89,10 +89,7 @@ var gallery_click_handler = function(event) {
     download(event, idx);
     break;
   }
-  // if (event.target.tagName === 'A') {
-  //   console.log(event.target.name);
-  // }
-}
+};
 
 var nature_init = function() {
   target.addEventListener('click', gallery_click_handler);
