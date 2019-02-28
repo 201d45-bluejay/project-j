@@ -71,6 +71,5 @@ var clear = function(cntxt) {
 
 var reset_current = function(){
   working.points = [];
-  console.log('reset');
-  draw(ctx);
+  draw(ctx, working);
 };
