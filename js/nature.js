@@ -1,5 +1,7 @@
 'use strict'; 
 
+var target = document.getElementById('flex-grid');
+
 // var edit = document.getElementById('images');
 // var download = document.getElementById('download');
 
@@ -21,7 +23,6 @@
 // */
 
 var create_frames = function() {
-  var target = document.getElementById('flex-grid');
   target.innerHTML = '';
 
   for (var i = 0; i < 12; i++) {
@@ -42,16 +43,21 @@ var create_frames = function() {
     a_el.id = `edit${i}`;
     a_el.textContent = 'Edit';
     div_el.appendChild(a_el);
-
+    
     a_el = document.createElement('a');
     a_el.className = 'button';
     a_el.name = 'download';
     a_el.id = `download${i}`;
     a_el.textContent = 'Download';
     div_el.appendChild(a_el);
-
+    
     outer_el.appendChild(div_el);
     target.appendChild(outer_el);
+    
+    var cntxt = canvas_el.getContext('2d');
+    console.log(cntxt);
+    data.current = i;
+    draw(cntxt, data.images[data.current]);
   }
 };
 
@@ -83,7 +89,13 @@ var gallery_click_handler = function(event) {
   // }
 }
 
-var target = document.getElementById('flex-grid');
-target.addEventListener('click', gallery_click_handler);
+var nature_init = function() {
+  target.addEventListener('click', gallery_click_handler);
 
-create_frames();
+  retrieve();
+  console.log(data);
+
+  create_frames();
+};
+
+nature_init();
