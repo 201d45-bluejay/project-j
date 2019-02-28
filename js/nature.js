@@ -55,15 +55,20 @@ var create_frames = function() {
     target.appendChild(outer_el);
     
     var cntxt = canvas_el.getContext('2d');
-    console.log(cntxt);
     data.current = i;
     draw(cntxt, data.images[data.current]);
   }
 };
 
 var edit = function(idx) {
+  debugger;
   console.log('edit', idx);
-}
+  var edit_url = './index.html';
+  data.current = idx;
+  data.newImg = false;
+  window.location.replace(edit_url);
+  localStorage.setItem('nature_images', JSON.stringify(data));
+};
 
 var download = function(idx) {
   console.log('download', idx);
@@ -71,7 +76,7 @@ var download = function(idx) {
     // event.target.download = 'download_image';
     // event.target.href = dataUrl;
     // //<a href="./assets/mastersystem.png"><button class="button" id="one">Download</button>
-}
+};
 
 var gallery_click_handler = function(event) {
   event.preventDefault();
@@ -97,7 +102,6 @@ var nature_init = function() {
   target.addEventListener('click', gallery_click_handler);
 
   retrieve();
-  console.log(data);
 
   create_frames();
 };
