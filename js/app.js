@@ -31,7 +31,6 @@ var click_handler = function(event) {
   } else if (event.target.id === 'save_button') {
     console.log(data);
     save_drawing();
-    // console.log(event.target);
 
   } else return;
 };

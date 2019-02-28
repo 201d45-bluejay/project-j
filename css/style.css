@@ -90,6 +90,10 @@ main.scroll {
     align-content: center;
 }
 
+#img1 {
+    width: 200px;
+}
+
 a {
     background-color: #B8336A;
     box-shadow: 5px #904C77;
