@@ -55,7 +55,6 @@ var create_frames = function() {
     target.appendChild(outer_el);
     
     var cntxt = canvas_el.getContext('2d');
-    console.log(cntxt);
     data.current = i;
     draw(cntxt, data.images[data.current]);
   }
@@ -63,18 +62,22 @@ var create_frames = function() {
 
 var edit = function(idx) {
   console.log('edit', idx);
-}
+  var edit_url = './index.html';
+  data.current = idx;
+  data.newImg = false;
+  window.location.replace(edit_url);
+  localStorage.setItem('nature_images', JSON.stringify(data));
+};
 
-var download = function(idx) {
-  console.log('download', idx);
-    // var dataUrl = canvas.toDataURL('image/png');
-    // event.target.download = 'download_image';
-    // event.target.href = dataUrl;
-    // //<a href="./assets/mastersystem.png"><button class="button" id="one">Download</button>
-}
+var download = function(e, idx) {
+  var dl_canvas = document.getElementById(`canvas${idx}`);
+  var dataUrl = dl_canvas.toDataURL('image/png');
+  console.log(e.target);
+  e.target.href = dataUrl;
+  e.target.download = 'download_image';
+};
 
 var gallery_click_handler = function(event) {
-  event.preventDefault();
   var name = event.target.name;
   var id = event.target.id;
   var idx;
@@ -85,7 +88,7 @@ var gallery_click_handler = function(event) {
     break;
   case 'download':
     idx = id.slice('download'.length);
-    download(idx);
+    download(event, idx);
     break;
   }
   // if (event.target.tagName === 'A') {
@@ -97,7 +100,6 @@ var nature_init = function() {
   target.addEventListener('click', gallery_click_handler);
 
   retrieve();
-  console.log(data);
 
   create_frames();
 };
