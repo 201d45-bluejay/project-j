@@ -61,12 +61,16 @@ var create_frames = function() {
   }
 };
 
-var save = function(idx) {
+var edit = function(idx) {
   console.log('edit', idx);
 }
 
 var download = function(idx) {
   console.log('download', idx);
+    // var dataUrl = canvas.toDataURL('image/png');
+    // event.target.download = 'download_image';
+    // event.target.href = dataUrl;
+    // //<a href="./assets/mastersystem.png"><button class="button" id="one">Download</button>
 }
 
 var gallery_click_handler = function(event) {
@@ -77,7 +81,7 @@ var gallery_click_handler = function(event) {
   switch (name) {
   case 'edit':
     idx = id.slice('edit'.length);
-    save(idx);
+    edit(idx);
     break;
   case 'download':
     idx = id.slice('download'.length);
