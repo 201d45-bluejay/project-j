@@ -38,7 +38,16 @@ var base_img = function(cntxt, url) {
   cntxt.fillStyle = working.fg_color;
   cntxt.arc(50, 50, 10, 0, Math.PI * 2);
   cntxt.fill();
-}
+  
+  var draw_base_img = function(cntxt, url) {
+    draw_base_img = new Image ();
+    draw_base_img.src = '../img/tree1.png';
+    draw_base_img.onload = function(){
+      cntxt.drawImage(draw_base_img);
+    }
+    
+    draw_base_img();
+  }
 
 var tree_limb = function(cntxt, points) {
   cntxt.beginPath();
