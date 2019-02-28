@@ -38,7 +38,7 @@ var base_img = function(cntxt, url) {
   // cntxt.fillStyle = working.fg_color;
   // cntxt.arc(50, 50, 10, 0, Math.PI * 2);
   // cntxt.fill();
-  var draw_base_img = new Image ();
+  var draw_base_img = new Image();
   draw_base_img.src = url;
   cntxt.drawImage(draw_base_img, 0, 0);
 };
