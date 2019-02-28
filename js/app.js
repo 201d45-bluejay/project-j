@@ -31,9 +31,9 @@ var click_handler = function(event) {
   } else if (event.target.id === 'save_button') {
     console.log(data);
     save_drawing();
-    // var dataUrl = canvas.toDataURL('image/png');
+     var dataUrl = canvas.toDataURL('./img/tree1.png');
     // event.target.download = 'download_image';
-    // event.target.href = dataUrl;
+     event.target.href = dataUrl;
     // //<a href="./assets/mastersystem.png"><button class="button" id="one">Download</button>
     // console.log(event.target);
 

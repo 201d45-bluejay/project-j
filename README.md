@@ -27,3 +27,13 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
 https://lavrton.com/hit-region-detection-for-html5-canvas-and-how-to-listen-to-click-events-on-canvas-shapes-815034d7e9f8/
 
 (work around for non-supported hit regions)
+
+https://www.w3schools.com/howto/howto_js_sticky_header.asp 
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+
+https://www.w3schools.com/css/css3_flexbox.asp#flex-wrap 
+
+https://css-tricks.com/css-basics-styling-links-like-boss/ 
+
+(CSS references)
