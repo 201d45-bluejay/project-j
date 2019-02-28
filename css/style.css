@@ -73,7 +73,7 @@ header a {
 }
 
 main {
-    margin-top:10px;
+    margin-top:0px;
     margin-bottom:20px; 
     margin-left: auto;
     margin-right: auto;
@@ -82,7 +82,7 @@ main {
 }
 
 main.scroll {
-    margin-top:10px;
+    margin-top:0px;
     margin-bottom:20px; 
     margin-left: auto;
     margin-right: auto;
