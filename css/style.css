@@ -1,23 +1,25 @@
 * {
     box-sizing: border-box;
+    font-family: sans-serif;
+}
+body {
+    background-color: #C1CEFE;
 }
 
-header {    
-    width: 1080px;
-    height:100px;
-    display: block;
-    overflow: hidden;
-}
 
-header > nav {
+/*header > nav {
     display: inline-block;
     height: 100px;
     width:1080px;
     overflow: hidden;
-}
+}*/
 header img {  
     float: left;
     margin: 18px;
+}
+
+h1 {
+    color: white;
 }
 
 header h1 {
@@ -55,26 +57,46 @@ header a {
 }
 
 .stickyHeader + .scroll{
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 .stickyHeader{
     position:fixed;
+    width: 960px;
+    height:100px;
+    margin-left: 280px;
+    background-color: #67AAF9;
 }
 
 main {
     margin-top:10px;
     margin-bottom:20px; 
-    margin-left: 20px;
+    margin-left: auto;
     margin-right: auto;
-    width:1020px;
+    width:960px;
+    align-content: center;
 }
 
-/* main button{
-    display: inline-block;
-    padding: 0 10px;
-} */
+main.scroll {
+    margin-top:10px;
+    margin-bottom:20px; 
+    margin-left: auto;
+    margin-right: auto;
+    width:960px;
+    align-content: center;
+}
 
+a {
+    background-color: #B8336A;
+    box-shadow: 5px #904C77;
+    color: white;
+    position: relative;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #9BBDF9;
+}
 main a{
     margin-top:20px
 }
@@ -103,17 +125,16 @@ p {
 
 .box{
     display: flex;
-    /* flex: 200px;
-    flex-wrap: nowrap; */
+
 } 
 
 #images{
     float: right;
 }
 
-#images:nth-child(3n+1){
+/*#images:nth-child(3n+1){
     clear:left;
-}
+}*/
 
 #flex-grid{
     display: flex;
@@ -133,28 +154,20 @@ p {
     flex:3; 
 }
 
-/* .button {
-        background-color: DodgerBlue;
-        border: none;
-        color: white;
-        padding: 12px 30px;
-        cursor: pointer;
-        font-size: 20px;
-      } */
-
  .button {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
     text-decoration: none;
-    background-color: DodgerBlue;
+    background-color: #904C77;
     border: none;
     color: white;
+    cursor: pointer;
     font-size: 20px;
 }
 
 .btn {
-    background-color: forestgreen;
+    background-color: #904C77;
     border: none;
     color :white;
     padding: 2px 9px;
@@ -169,14 +182,23 @@ p {
     overflow: hidden;
 }
 
-footer{
-    margin-left: 10px;
-    
+footer {
+    width: 960px;
+    height:80px;
+    margin-left: auto;
+    margin-right: auto;
+    width:960px;
+    background-color: #67AAF9;
 }
 
 footer img {
-    position: absolute;
-    top: 2198;
-    right: 0;
+    float: right;
+    margin-top: 5px;
     margin-right: 5px;
+}
+
+#flex-grid canvas{
+    width: 320px;
+    height: 320px;
+    padding: 15px;
 }

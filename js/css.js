@@ -1,6 +1,5 @@
 'use strict';
 
-window.onscroll = function(){stickyFunction()}; //when the user scrolls execute sticky function
 
 var header = document.getElementById("header"); //get header
 var stickyHeader = header.offsetTop; //get the Offset position of the nav bar
