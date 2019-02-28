@@ -26,9 +26,9 @@ var canvas_click = function(event, cntxt){
     working.points.push({ x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y });
     point1 = {};
     point2 = {};
-    draw(cntxt);
+    draw(cntxt, working);
   } else {
-    draw(cntxt);
+    draw(cntxt, working);
     point1 = {};
   }
 };
