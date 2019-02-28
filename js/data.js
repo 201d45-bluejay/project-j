@@ -20,7 +20,6 @@ var Img = function (points, tree, bg_color, fg_color) {
 };
 
 var retrieve = function(){
-  debugger;
   if (localStorage.getItem('nature_images')){
     data = JSON.parse(localStorage.getItem('nature_images'));
     // if we're getting data after picking an image from the gallery to edit,
@@ -36,6 +35,8 @@ var retrieve = function(){
     // after retrieving data, set newImg flag to true, because we only load
     // images when coming in the first time.
     data.newImg = true;
+    // update localStorage object to start a new image
+    localStorage.setItem('nature_images', JSON.stringify(data));
   } else {
     data = new Image_Data();
     working = new Img();
