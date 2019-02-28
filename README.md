@@ -37,3 +37,17 @@ https://www.w3schools.com/css/css3_flexbox.asp#flex-wrap
 https://css-tricks.com/css-basics-styling-links-like-boss/ 
 
 (CSS references)
+
+https://stackoverflow.com/questions/6011378/how-to-add-image-to-canvas
+
+(adding base image to canvas)
+
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
+
+(freehand drawing)
+
+http://perfectionkills.com/exploring-canvas-drawing-techniques/
+
+(to get the lines on the page)
+
