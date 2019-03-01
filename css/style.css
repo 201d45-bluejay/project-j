@@ -3,9 +3,8 @@
     font-family: sans-serif;
 }
 body {
-    background-color: #C1CEFE;
+    background-color: #84CEEB;
 }
-
 
 /*header > nav {
     display: inline-block;
@@ -69,7 +68,7 @@ header a {
     height:60px;
     margin: 0; 
     margin-top: 0;
-    background-color: #67AAF9;
+    background-color: #5680E9;
 }
 
 main {
@@ -83,7 +82,7 @@ main {
 
 main.scroll {
     margin-top:0px;
-    margin-bottom:20px; 
+    margin-bottom:0px; 
     margin-left: auto;
     margin-right: auto;
     width:960px;
@@ -95,7 +94,7 @@ main.scroll {
 }
 
 a {
-    background-color: #B8336A;
+    background-color: #C1C8E4;
     box-shadow: 5px #904C77;
     color: white;
     position: relative;
@@ -106,7 +105,7 @@ a:hover {
     background-color: #9BBDF9;
 }
 main a{
-    margin-top:20px
+    margin-top:0px
 }
 
 article img{
@@ -147,24 +146,32 @@ p {
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid black;
+    padding: 10px;
 }
 
 #JerodRubalcava{
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid black;
+    padding: 10px;
 }
 
 #JessieVanVolkinburg{
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid black;
+    padding: 10px;
 }
 
 #JessicaZuchowski{
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid black;
+    padding: 10px;
 }
 
 #flex-grid{
@@ -209,7 +216,7 @@ p {
 	font-weight:bold;
 	padding:11px 23px;
     text-decoration:none;
-    margin: 20px;
+    margin: 5px;
 }
 
 #save_button{
@@ -236,7 +243,8 @@ p {
 	font-weight:bold;
 	padding:11px 23px;
     text-decoration:none;
-    margin: 20px;
+    margin: 5px;
+    margin-top: 0;
 }
 
  .button {
@@ -273,7 +281,8 @@ p {
 	font-weight:bold;
 	padding:11px 23px;
     text-decoration:none;
-    margin: 20px;
+    margin: 0px 5px;
+
 }
 
 .btn {
@@ -312,7 +321,9 @@ p {
 	font-size:15px;
 	font-weight:bold;
 	padding:11px 23px;
-	text-decoration:none;
+    text-decoration:none;
+    margin: 0px;
+    margin-bottom: 20px;
 }
 
 footer {
@@ -337,6 +348,7 @@ footer img {
     width: 320px;
     height: 320px;
     padding: 15px;
+    padding-bottom: 0;
 }
 
 #JohnBavendam {
