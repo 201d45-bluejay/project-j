@@ -56,7 +56,7 @@ var tree_limb = function(cntxt, points) {
 var draw = function(cntxt, cur_img) {
   clear(cntxt);
   // draw base image
-  base_img(cntxt, '../img/tree1.png');
+  base_img(cntxt, './img/tree1.png');
 
   // array of points, draws a single thick line per point set
   for (var i = 0; i < cur_img.points.length; i++) {
