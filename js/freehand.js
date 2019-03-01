@@ -2,23 +2,6 @@
 
 var data,working;
 
-var Image_Data = function () {
-  this.current = 0; // either points at "most recent image" or "load this one"
-  this.open_idx = 0;
-  this.images = [];
-  this.newImg = true;
-  for (var i = 0; i < 12; i++) {
-    this.images.push(new Img());
-  }
-};
-
-var Img = function (points, tree, bg_color, fg_color) {
-  this.points = points || [];
-  this.type = tree || 'tree';
-  this.bg_color = bg_color || 'rgb(255,255,255)';
-  this.fg_color = fg_color || 'rgb(0,0,0)';
-};
-
 var point1 = {};
 var point2 = {};
 
@@ -83,11 +66,7 @@ var reset = function(){
   draw();
 };
 
-var overwrite_check = function(){
-  return confirm('overwrite oldest image?');
-};
-
-var save = function(){
+var save_drawing = function(){
   if (data.open_idx < 12){
     data.images[data.open_idx] = working;
     data.current = data.open_idx; // set "current" to be the most recently saved image
@@ -103,7 +82,6 @@ var save = function(){
   }
   alert(`Saved as image #${data.open_idx}`);
 };
-
 var retrieve = function(){
   if (localStorage.getItem('nature_images')){
     data = JSON.parse(localStorage.getItem('nature_images'));
@@ -136,7 +114,7 @@ var click_handler = function(event) {
     reset();
   } else if (event.target.id === 'save_button') {
     console.log(data);
-    save();
+    save_drawing();
     // var dataUrl = canvas.toDataURL('image/png');
     // event.target.download = 'download_image';
     // event.target.href = dataUrl;
@@ -178,6 +156,7 @@ el.onmousemove = function(e) {
 el.onmouseup = function() {
   isDrawing = false;
 };
+
 retrieve();
 
 draw();
