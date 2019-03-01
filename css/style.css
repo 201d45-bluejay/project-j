@@ -3,9 +3,8 @@
     font-family: sans-serif;
 }
 body {
-    background-color: #C1CEFE;
+    background-color: #C1C8E4;
 }
-
 
 /*header > nav {
     display: inline-block;
@@ -16,41 +15,47 @@ body {
 header img {  
     float: left;
     margin: 0px;
-    height: 60px;
+    height: 50px;
 }
 
 h1 {
-    color: white;
-    padding-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    padding-left: 20px;
+}
+
+h2 {
+    font-size: 20px;
 }
 
 header h1 {
     float: left;
     line-height: 60px;
     height: 60px;
-    font-size: 50px;
+    font-size: 35px;
 }
 
 header ul {
     display: inline-block;
-    height: 60px;
+    height: 40px;
     line-height: 60px;
     margin: auto 0;
-    margin-right: 20px;
+    margin-right: 10px;
     overflow: auto;
     position: absolute; 
     top: 0;
     right: 0;
+    /* box-shadow: 0 0 15px 10px rgb(170, 194, 206); */
 }
 
 header ul > li {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     float:left;
     margin: auto 0;
     Line-height: 60px;
     height: 60px;
-    font-size: 24px;
-    /* border-color:white */
-    border-right: 1px solid white
+    font-size: 15px;
+    border-right: 1px solid black
 }
 
 header a {
@@ -66,10 +71,19 @@ header a {
 .stickyHeader{
     position:fixed;
     width: 100%;
-    height:60px;
+    height:50px;
     margin: 0; 
     margin-top: 0;
-    background-color: #67AAF9;
+    background-color: rgb(170, 194, 206);
+    box-shadow: 0 0 10px 5px #67AAF9;
+}
+
+#canvas {
+    box-shadow: 0 0 20px 5px#67AAF9;
+}
+
+#flex-grid {
+    box-shadow: 0 0 20px 5px #67AAF9;
 }
 
 main {
@@ -83,7 +97,7 @@ main {
 
 main.scroll {
     margin-top:0px;
-    margin-bottom:20px; 
+    margin-bottom:0px; 
     margin-left: auto;
     margin-right: auto;
     width:960px;
@@ -95,18 +109,18 @@ main.scroll {
 }
 
 a {
-    background-color: #B8336A;
-    box-shadow: 5px #904C77;
-    color: white;
+    background-color: rgb(170, 194, 206);
+    box-shadow: 5px rgb(170, 194, 206);
+    color: black;
     position: relative;
     text-decoration: none;
 }
 
 a:hover {
-    background-color: #9BBDF9;
+    background-color: rgb(170, 194, 206);
 }
 main a{
-    margin-top:20px
+    margin-top:0px
 }
 
 article img{
@@ -147,24 +161,32 @@ p {
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid #67AAF9;
+    padding: 10px;
 }
 
 #JerodRubalcava{
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid #67AAF9;
+    padding: 10px;
 }
 
 #JessieVanVolkinburg{
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid #67AAF9;
+    padding: 10px;
 }
 
 #JessicaZuchowski{
     width: 200px;
     height: 200px;
     border-radius: 8px;
+    border: 15px solid #67AAF9;
+    padding: 10px;
 }
 
 #flex-grid{
@@ -203,13 +225,13 @@ p {
 	border:1px solid #566963;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:black;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	padding:11px 23px;
     text-decoration:none;
-    margin: 20px;
+    margin: 5px;
 }
 
 #save_button{
@@ -230,13 +252,15 @@ p {
 	border:1px solid #566963;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:black;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	padding:11px 23px;
     text-decoration:none;
-    margin: 20px;
+    margin: 5px;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
  .button {
@@ -267,13 +291,14 @@ p {
 	border:1px solid #566963;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:black;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	padding:11px 23px;
     text-decoration:none;
-    margin: 20px;
+    margin: 0px 5px;
+
 }
 
 .btn {
@@ -307,12 +332,14 @@ p {
 	border:1px solid #566963;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:black;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	padding:11px 23px;
-	text-decoration:none;
+    text-decoration:none;
+    margin: 0px;
+    margin-bottom: 20px;
 }
 
 footer {
@@ -322,7 +349,8 @@ footer {
     margin-right: auto;
     width:100%;
     height: 40px;
-    background-color: #67AAF9;
+    background-color: rgb(170, 194, 206);
+    box-shadow: 0 0 10px 5px #67AAF9
 }
 
 footer img {
@@ -337,6 +365,7 @@ footer img {
     width: 320px;
     height: 320px;
     padding: 15px;
+    padding-bottom: 0;
 }
 
 #JohnBavendam {

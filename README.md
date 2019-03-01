@@ -51,6 +51,12 @@ http://perfectionkills.com/exploring-canvas-drawing-techniques/
 
 (to get the lines on the page)
 
+https://www.bestcssbuttongenerator.com/#/3
+(buttons for CSS)
+
+https://codepen.io/ChrisMla/pen/jWMLWY
+(animation for CSS)
+
 Authors:
 
 John Bavendam, Jerod Rubalcava, Jessie Van Volkinburg, Jessica Zuchowski
