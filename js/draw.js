@@ -2,6 +2,8 @@
 
 var point1 = {};
 var point2 = {};
+var treeimg = new Image();
+treeimg.src = './img/tree1.png';
 
 var canvas_click = function(event, cntxt){
   var mouse = {
@@ -33,14 +35,13 @@ var canvas_click = function(event, cntxt){
   }
 };
 
-var base_img = function(cntxt, url) {
+var base_img = function(cntxt) {
   // cntxt.beginPath();
   // cntxt.fillStyle = working.fg_color;
   // cntxt.arc(50, 50, 10, 0, Math.PI * 2);
   // cntxt.fill();
-  var draw_base_img = new Image();
-  draw_base_img.src = url;
-  cntxt.drawImage(draw_base_img, 0, 0);
+  var draw_base_img = document.getElementById('treeimg');
+  cntxt.drawImage(treeimg, 0, 0);
 };
 
 var tree_limb = function(cntxt, points) {
@@ -56,7 +57,7 @@ var tree_limb = function(cntxt, points) {
 var draw = function(cntxt, cur_img) {
   clear(cntxt);
   // draw base image
-  base_img(cntxt, '../img/tree1.png');
+  base_img(cntxt);
 
   // array of points, draws a single thick line per point set
   for (var i = 0; i < cur_img.points.length; i++) {

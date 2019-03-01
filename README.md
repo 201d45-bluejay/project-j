@@ -1,4 +1,6 @@
 # project-j
+ Project J is the idea of four developers and friends looking to design a site where you can utilize creativity along with technology to construct nature-based images. We strive to harness the power of web development tools to create beautiful things. We lovingly  built this site using HTML, CSS, JavaScript….. Take a moment from your busy day and create something, anything. 
+
 Resources:
 
 https://www.w3schools.com/howto/howto_css_modals.asp
@@ -14,7 +16,6 @@ https://www.w3schools.com/howto/howto_css_download_button.asp
 https://jsfiddle.net/codepo8/V6ufG/2/
 
 (download options)
-
 
 https://jsfiddle.net/codepo8/V6ufG/2/ 
 
@@ -37,3 +38,20 @@ https://www.w3schools.com/css/css3_flexbox.asp#flex-wrap
 https://css-tricks.com/css-basics-styling-links-like-boss/ 
 
 (CSS references)
+
+https://stackoverflow.com/questions/6011378/how-to-add-image-to-canvas
+
+(adding base image to canvas)
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
+
+(freehand drawing)
+
+http://perfectionkills.com/exploring-canvas-drawing-techniques/
+
+(to get the lines on the page)
+
+Authors:
+
+John Bavendam, Jerod Rubalcava, Jessie Van Volkinburg, Jessica Zuchowski
+

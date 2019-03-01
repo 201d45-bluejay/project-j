@@ -38,16 +38,16 @@ var canvas_click = function(event){
 var draw = function() {
   clear();
   // draw base image
-  ctx.beginPath();
-  ctx.fillStyle = working.fg_color;
-  ctx.arc(50, 50, 10, 0, Math.PI * 2);
-  ctx.fill();
+  // ctx.beginPath();
+  // ctx.fillStyle = working.fg_color;
+  // ctx.arc(50, 50, 10, 0, Math.PI * 2);
+  // ctx.fill();
 
   // array of points, draws a single thick line per point set
   for (var i = 0; i < working.points.length; i++) {
     ctx.beginPath();
     ctx.lineWidth = 10;
-    ctx.lineCap = 'butt';
+    ctx.lineCap = 'round';
     ctx.strokeStyle = working.fg_color;
     ctx.moveTo(working.points[i].x1, working.points[i].y1);
     ctx.lineTo(working.points[i].x2, working.points[i].y2);

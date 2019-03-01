@@ -10,15 +10,16 @@ var save_drawing = function(){
     data.current = data.open_idx; // set "current" to be the most recently saved image
     data.open_idx++;
     localStorage.setItem('nature_images', JSON.stringify(data));
+    alert(`Saved as image #${data.open_idx}`);
   }
   else {
     if (overwrite_check()){
       data.images.push(data.images.shift());
       data.images[11] = working;
       localStorage.setItem('nature_images', JSON.stringify(data));
+      alert(`Saved as image #${data.open_idx}`);
     }
   }
-  alert(`Saved as image #${data.open_idx}`);
 };
 
 var click_handler = function(event) {
